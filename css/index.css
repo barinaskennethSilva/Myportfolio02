@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Cocogoose Pro';
+  src: url('path-to-your-font/CocogoosePro-Regular.woff2') format('woff2'),
+       url('path-to-your-font/CocogoosePro-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  background-color: #fff;
+  overflow: hidden;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.navbar-brand{
+  font-family: 'Cocogoose Pro', sans-serif;
+
+
+}
+.profile{
+  height: 50px;
+  width:50px;
+  border-radius: 50%;
+  border: 2px solid #111;
+}
+main{
+  height: 75vh;
+}
+.container1, .container2{
+  width: 95%;
+  margin: 20px auto;
+  height: 200px;
+  background-color: grey;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.img1{
+  height: 70px;
+  width: 70px;
+  border-radius: 10px;
+}
