@@ -14,7 +14,9 @@ body{
   margin: 0;
   box-sizing: border-box;
 }
-
+.topNav{
+  z-index: 100;
+}
 .navbar-brand{
   font-family: 'Cocogoose Pro', sans-serif;
 
@@ -27,7 +29,13 @@ body{
   border: 2px solid #111;
 }
 main{
-  height: 75vh;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  left: 0px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .container1, .container2{
   width: 95%;
@@ -65,4 +73,9 @@ main{
    height: 50px;
    margin: auto;
    
+ }
+ footer{
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
  }
