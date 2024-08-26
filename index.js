@@ -1,7 +1,7 @@
 
-function closeUp(){
-  document.getElementById('set1').style.animation = "skillsAnimation 2s infinite";
-}
+/*function closeUp(){
+  document.getElementById('set1').style.animation = "skillsAnimation 5s";
+}*/
 
 
 window.addEventListener('scroll', (event) => {

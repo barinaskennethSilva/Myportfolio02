@@ -1,10 +1,4 @@
-@font-face {
-  font-family: 'Cocogoose Pro';
-  src: url('path-to-your-font/CocogoosePro-Regular.woff2') format('woff2'),
-       url('path-to-your-font/CocogoosePro-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+
 body{
   background-color: #fff;
   overflow: hidden;
@@ -88,7 +82,9 @@ main{
    bottom: 0px;
    width: 100%;
  }
-
+.set1:hover{
+  animation: skillsAnimation 5s;
+}
  @keyframes skillsAnimation{
    10%{
      transform:rotate(5deg);
