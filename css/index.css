@@ -50,7 +50,7 @@ main{
 .container2{
   display: flex;
   flex-direction: column !important;
-  height: 40vh;
+  height: 50vh;
             justify-content: space-between;
             position: relative;
 }
@@ -135,47 +135,23 @@ main{
    bottom: 0px;
    width: 100%;
  }
-.set1:hover{
-  animation: skillsAnimation 5s;
+.contact{
+  display: flex;
+  flex-direction: column !important;
+  text-align: left !important;
+  padding: 10px !important;
 }
- @keyframes skillsAnimation{
-   10%{
-     left: -400px;
-    /* transform:rotate(5deg);*/
-   }
-   15%{
-     left: -350px;
-   /*  transform:rotate(10deg);*/
-   }
-25%{
-  left: -300px;
- /*    transform:rotate(15deg);*/
-   }
-   30%{
-     left:-250px;
- /*    transform:rotate(20deg);*/
-   }
-   35%{
-     left: -200px;
-  /*   transform:rotate(15deg); */
-   }
-   40%{
-     left: -150px;
-  /*   transform:rotate(10deg);*/
-   }
-45%{
-  left: -100px;
-   /*  transform:rotate(5deg);*/
-   }
-50%{
-  left: -50px;
-  /*   transform:rotate(-5deg);*/
-   }
-   55%{
-     left: 10px;
-  /*   transform:rotate(-10deg);*/
-   }
- }
+.contact a{
+  background-color: red;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.contact label{
+  margin-bottom: 10px;
+}
  .container3 .proj{
    height: 100%;
    width: 50%;
