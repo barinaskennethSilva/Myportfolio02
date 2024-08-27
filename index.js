@@ -1,6 +1,7 @@
 
-/*function closeUp(){
-  document.getElementById('set1').style.animation = "skillsAnimation 5s";
+
+/*window.onload = function(){
+  document.getElementById('set1').style.animation = "skillsAnimation 5s infinite";
 }*/
 
 
