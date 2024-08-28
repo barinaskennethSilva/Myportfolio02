@@ -1,9 +1,11 @@
 
 
-/*window.onload = function(){
-  document.getElementById('set1').style.animation = "skillsAnimation 5s infinite";
-}*/
-
+function linkChat(){
+  window.open('Chatbot.html');
+}
+function backPoint(){
+  window.open('index.html');
+}
 
 window.addEventListener('scroll', (event) => {
   console.log('Scrolled', window.pageYOffset); 

@@ -27,8 +27,10 @@
         <div class="inFo ms-3">
                   <h1>Kenneth Barinas</h1>
         <h2><span style="color:red;">Web</span>Developer</h2>
-   <button class="btn btn-dark mt-5 me-3">Download CV</button>
-  <button class="btn btn-danger mt-5">Chatbot</button>
+   <button class="btn btn-dark mt-5 me-3" id="downloadPdf">Download CV</button>
+   <a id="pdfLink" href="Img/updatedCV.pdf" download="MyCV.pdf" style="display:none;"></a>
+
+  <button class="btn btn-danger mt-5" onclick="linkChat()">Chatbot</button>
         </div>
 
   </div>
@@ -97,7 +99,7 @@
   <div class="projectInfo">
       <h1>ChatApp</h1>
   <span>Is a communication website that used to chat in realtime.</span>
-
+<button class="btn btn-primary w-75 ms-3 mt-3 fw-bold">View Details</button>
   </div>
 
   </div>
@@ -110,7 +112,7 @@
      <div class="container3 contact" style="margin-bottom:90px">
        <label><a href="#" class="fa fa-google"></a>kbarinas0@gmail.com</label>
        <label><a href="#" class="fa fa-github"></a>kbarinas0@gmail.com</label>
-<label><a href="#" class="fa fa-google"></a>kbarinas0@gmail.com</label>
+<label><a href="#" class="fa fa-facebook"></a>Kenneth Barinas</label>
  </div> 
 </main>
 
@@ -119,6 +121,10 @@
   <label style="font-size:12px">kbarinas0.gmail.com</label>
 
 </footer>
-
+<script>
+  document.getElementById('downloadPdf').addEventListener('click', function(){
+  document.getElementById('pdfLink').click();
+});
+</script>
 </body>
 </html>
