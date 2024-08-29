@@ -121,18 +121,43 @@
  msgText.textContent = messageText;
  chatContainer.appendChild(msgText);
  chatContainer.scrollTop = chatContainer.scrollHeight;
-
+sMsreply();
         sendSms.value = '';
-        sMsreply();
+        
    }
     }
-    function sMsreply(){
-   const sendSms = document.getElementById('inputSms');
+    function botReply(){
+    const botRply = document.createElement('div');
+    botRply.className = "msgInput";
+    if(sendMessage()){
       
- const personalInfo =[
-   { what:{"kenneth"},output{"kenneth Barinas"}}     
-    ]
     }
+    }
+    function sMsreply() {
+    const sendSms = document.getElementById('inputSms').value.trim();
+
+    if (typeof sendSms === 'string' && sendSms !== "") {
+        
+        const personalInfo = [
+            { what: "kenneth", output: "kenneth Barinas gwapo and tisoy" ,
+       Hai: "PogiAko", output: "Hello have a nice day" }
+              
+            
+        ];
+
+
+        const reply = personalInfo.find(info => sendSms.toLowerCase().includes(info.what.toLowerCase()));
+
+        if (reply) {
+            document.getElementById('textLabel').innerHTML = reply.output;
+        } else {
+document.getElementById('textLabel').innerHTML ="Im design to introduced the personal background of my owner";
+        }
+    } else {
+        console.log("No input provided or invalid input."); 
+    }
+}
+
   </script>
   </body>
   </html>
