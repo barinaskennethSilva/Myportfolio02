@@ -31,6 +31,7 @@
       padding:10px;
       display:flex;
       flex-direction:row;
+      color:#fff;
     }
     footer{
       padding:10px;
@@ -51,6 +52,28 @@
   padding:10px;
   width:83%;
 }
+.TextInput button i{
+  font-size:30px;
+}
+.TextInput button{
+  background-color:transparent;
+  border:none;
+  outline:none;
+}
+.TextInput button:hover{
+  color:violet;
+}
+.UserInput{
+  background-color:green;
+  color:#fff;
+  border-radius:10px;
+  width:240px;
+  position:relative;
+  top:50px;
+  margin-top:20px;
+  padding:10px;
+  float:right;
+}
   </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark topNav">
   <div class="container-fluid">
@@ -60,20 +83,56 @@
 </nav>
 
 <main>
-  <div class="text-container">
+  <div class="text-container" id="smsContainer">
     <div class="msgInput">
           <img src="Img/profile.png" class="profile"/>
           
-    <label class="ms-3 textLabel">Hello how can help you!</label>      
+    <label class="ms-3 textLabel" id="textLabel">Hello how can help you!</label>      
     </div>
+    
+    
+    
   </div>
   </main>
   <footer>
     <div class="TextInput">
-            <input type="text" placeholder="Type a message...">
-<button type="button">Send</button>
+            <input type="text" placeholder="Type a message..." id="inputSms">
+<button type="button" id="send-btn"><i class="fa fa-paper-plane-o"></i></button>
     </div>
   </footer>
-  
+  <script>
+    document.getElementById('inputSms').addEventListener("keypress", function(event){
+      if(event.key === "Enter"){
+        sendMessage();
+      }
+    });
+    document.getElementById('send-btn').addEventListener("click", function(){
+      sendMessage();
+    });
+    function sendMessage(){
+   const sendSms = document.getElementById('inputSms');
+   const messageText = sendSms.value.trim();
+   
+   if(messageText !== ''){
+     const chatContainer = document.getElementById('smsContainer');
+ const msgText = document.createElement('div');
+ msgText.className = "UserInput";
+ msgText.classList.add('message', 'user');
+ msgText.textContent = messageText;
+ chatContainer.appendChild(msgText);
+ chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        sendSms.value = '';
+        sMsreply();
+   }
+    }
+    function sMsreply(){
+   const sendSms = document.getElementById('inputSms');
+      
+ const personalInfo =[
+   { what:{"kenneth"},output{"kenneth Barinas"}}     
+    ]
+    }
+  </script>
   </body>
   </html>
