@@ -3,114 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centering Animation</title>
-    <style>
-        /*body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }*/
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 80%;
-            position: relative;
-        }
-
-        .left, .right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 200px;
-        }
-
-        .box {
-            width: 100px;
-            height: 50px;
-            background-color: #3498db;
-            margin: 10px 0;
-            opacity: 0;
-            transform: scale(0.5);
-        }
-
-        .left .box {
-            transform-origin: left;
-        }
-
-        .right .box {
-            transform-origin: right;
-        }
-
-        .center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 200px;
-            background-color: #e74c3c;
-            z-index: -1;
-        }
-
-        @keyframes moveToCenter {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1) translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .left .box, .right .box {
-            animation: moveToCenter 5s forwards;
-        }
-
-        .left .box:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .left .box:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .left .box:nth-child(3) {
-            animation-delay: 2s;
-        }
-
-        .right .box:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .right .box:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .right .box:nth-child(3) {
-            animation-delay: 2s;
-        }
-    </style>
+    <title>Chatbot with Brain.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/brain.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="left">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-        </div>
-        <div class="right">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-        </div>
-        <div class="center"></div>
-    </div>
+    <h1>Chatbot</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <h2>Train the Bot</h2>
+    <input type="text" id="trainInput" placeholder="Question">
+    <input type="text" id="trainOutput" placeholder="Answer">
+    <button onclick="trainBot()">Train</button>
+
+    <script>
+        // Initialize the neural network
+        const net = new brain.recurrent.LSTM();
+
+        // Training data
+        const trainingData = [
+            { input: "hi", output: "Hello! How can I help you?" },
+            { input: "how are you", output: "I'm a bot, so I'm always good!" },
+            { input: "what is your name", output: "I'm your friendly chatbot!" },
+        ];
+
+        // Train the network
+        function trainNetwork() {
+            net.train(trainingData, {
+                iterations: 1000, // Number of training iterations
+                log: true, // Log progress to the console
+            });
+        }
+
+        // Function to train the bot with new input/output pairs
+        function trainBot() {
+            const input = document.getElementById('trainInput').value;
+            const output = document.getElementById('trainOutput').value;
+            trainingData.push({ input, output });
+            trainNetwork();
+            alert('Bot trained successfully!');
+            document.getElementById('trainInput').value = '';
+            document.getElementById('trainOutput').value = '';
+        }
+
+        // Function to handle user messages
+        function sendMessage() {
+            const input = document.getElementById('userInput').value;
+            const output = net.run(input);
+            const chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += `<p><strong>You:</strong> ${input}</p>`;
+            chatbox.innerHTML += `<p><strong>Bot:</strong> ${output}</p>`;
+            document.getElementById('userInput').value = '';
+        }
+
+        // Initial training
+        trainNetwork();
+    </script>
 </body>
 </html>

@@ -139,14 +139,13 @@ sMsreply();
     if (typeof sendSms === 'string' && sendSms !== "") {
         
         const personalInfo = [
-            { what: "kenneth", output: "kenneth Barinas gwapo and tisoy" ,
-       Hai: "PogiAko", output: "Hello have a nice day" }
+            { input: "who is kenneth", output: "kenneth Barinas gwapo and tisoy"},
+      { input: "PogiAko", output: "Hello have a nice day" },
               
             
         ];
 
-
-        const reply = personalInfo.find(info => sendSms.toLowerCase().includes(info.what.toLowerCase()));
+        const reply = personalInfo.find(info => sendSms.toLowerCase().includes(info.input.toLowerCase()));
 
         if (reply) {
             document.getElementById('textLabel').innerHTML = reply.output;
