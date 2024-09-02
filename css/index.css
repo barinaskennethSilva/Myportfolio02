@@ -410,6 +410,7 @@ transform: scale(0.5);
    width:50%;
    height: 100%;
    margin-left: 10px;
+   flex-shrink: 0; 
  }
  .video{
    background-color: #111;
