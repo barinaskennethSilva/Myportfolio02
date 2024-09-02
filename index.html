@@ -14,6 +14,14 @@
   <title>PersonalPortfolio</title>
 </head>
 <body>
+  
+    <!---- Project Info ---->
+  <div class="content-project" id="projRecord">
+    <h1>Chat App</h1>
+  </div>
+  
+  
+  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark topNav">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">	    Personal Website</a>
@@ -98,11 +106,12 @@
   <img src="Img/project1.jpg" class="proj"/>
   <div class="projectInfo">
       <h1>ChatApp</h1>
-  <span>Is a communication website that used to chat in realtime.</span>
-<button class="btn btn-primary w-75 ms-3 mt-3 fw-bold">View Details</button>
+  <span>A communication website used for real-time chatting.</span>
+<button class="btn btn-primary w-75 ms-3 mt-3 fw-bold" onclick="viewProj()">View Details</button>
   </div>
+  </div>
+  
 
-  </div>
   
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -122,6 +131,12 @@
 
 </footer>
 <script>
+function viewProj(){
+ var proj =  document.getElementById('projRecord')
+ proj.style.animation = "projectInfo 2.5s";
+ proj.style.opacity = 5;
+proj.style.zIndex  = 200;
+}
   document.getElementById('downloadPdf').addEventListener('click', function(){
   document.getElementById('pdfLink').click();
 });

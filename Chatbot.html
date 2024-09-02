@@ -100,6 +100,7 @@
 <button type="button" id="send-btn"><i class="fa fa-paper-plane-o"></i></button>
     </div>
   </footer>
+      <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script>
     document.getElementById('inputSms').addEventListener("keypress", function(event){
       if(event.key === "Enter"){
@@ -140,11 +141,13 @@ sMsreply();
         
         const personalInfo = [
             { input: "who is kenneth", output: "kenneth Barinas gwapo and tisoy"},
-      { input: "PogiAko", output: "Hello have a nice day" },
-              
-            
+      { input: "hai", output: "Hello have a nice day sir" },
         ];
-
+const options = {
+            includeScore: true,
+            keys: ['input']
+        };
+        
         const reply = personalInfo.find(info => sendSms.toLowerCase().includes(info.input.toLowerCase()));
 
         if (reply) {
@@ -153,7 +156,7 @@ sMsreply();
 document.getElementById('textLabel').innerHTML ="Im design to introduced the personal background of my owner";
         }
     } else {
-        console.log("No input provided or invalid input."); 
+        document.getElementById('textLabel').innerHTML ="No input provided or invalid input."; 
     }
 }
 
