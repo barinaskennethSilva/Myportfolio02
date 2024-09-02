@@ -402,7 +402,12 @@ transform: scale(0.5);
    width:50%;
    height: 50%;
  }
- 
+ .video{
+   background-color: #111;
+   border-radius: 10px;
+   margin: auto;
+   width: 90%;
+ }
 }
 
 
