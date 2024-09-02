@@ -360,6 +360,7 @@ main{
  }
  @keyframes projectInfo{
    0%{
+     transform: scale(0.5);
      opacity: 0;
      z-index:0;
    }
@@ -374,8 +375,34 @@ z-index:150;
    100%{
      opacity: 2;
 z-index:200;
+transform: scale(1) translateX(0);
    }
  }
+  @keyframes projectReverse{
+   0%{
+     opacity: 2;
+     z-index:200;
+     transform: scale(1) translateX(0);
+   }
+   50%{
+     opacity: 1.5;
+z-index:150;
+   }
+   75%{
+    opacity: 0.5;
+z-index:100; 
+   }
+   100%{
+     opacity: 0;
+z-index:0;
+transform: scale(0.5);
+   }
+ }
+ #projRecord img{
+   width:50%;
+   height: 50%;
+ }
+ 
 }
 
 

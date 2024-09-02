@@ -17,7 +17,12 @@
   
     <!---- Project Info ---->
   <div class="content-project" id="projRecord">
-    <h1>Chat App</h1>
+        <nav class="navbar">
+       <a href="#" class=" ms-2 fw-bold navbar-brand">Chat App</a>
+    <button onclick="closeProj()">Close</button>
+
+    </nav>
+     <img src="Img/project1.jpg" class="proj"/>
   </div>
   
   
@@ -136,6 +141,13 @@ function viewProj(){
  proj.style.animation = "projectInfo 2.5s";
  proj.style.opacity = 5;
 proj.style.zIndex  = 200;
+}
+function closeProj(){
+  var proj =  document.getElementById('projRecord');
+  proj.style.animation = "projectReverse 2.5s";
+  
+  proj.style.opacity = 0;
+proj.style.zIndex  = 0;
 }
   document.getElementById('downloadPdf').addEventListener('click', function(){
   document.getElementById('pdfLink').click();
