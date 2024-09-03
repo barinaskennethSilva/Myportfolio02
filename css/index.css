@@ -166,6 +166,83 @@ main{
    font-family: cursive;
    color: #fff;
  }
+  .content-project{
+  background-color:#fff;
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0px;
+  left:0px;
+  opacity: 0;
+  transition: 0.5s;
+ }
+ 
+  @keyframes projectInfo{
+   0%{
+     transform: scale(0.5);
+     opacity: 0;
+     z-index:0;
+   }
+   50%{
+     opacity: 0.5;
+z-index:100;
+   }
+   75%{
+    opacity: 1.5;
+z-index:150; 
+   }
+   100%{
+     opacity: 2;
+z-index:200;
+transform: scale(1) translateX(0);
+   }
+ }
+  @keyframes projectReverse{
+   0%{
+     opacity: 2;
+     z-index:200;
+     transform: scale(1) translateX(0);
+   }
+   50%{
+     opacity: 1.5;
+z-index:150;
+   }
+   75%{
+    opacity: 0.5;
+z-index:100; 
+   }
+   100%{
+     opacity: 0;
+z-index:0;
+transform: scale(0.5);
+   }
+ }
+ .imageProj{
+   width: 100%;
+   height: 40%;
+   display: flex;
+   flex-direction: row;
+   overflow-x: auto;
+   overflow-y: hidden;
+ }
+ .imageProj img{
+   width:50%;
+   height: 100%;
+   margin-left: 10px;
+   flex-shrink: 0; 
+ }
+ .video{
+   background-color: #111;
+   border-radius: 10px;
+   margin: auto;
+   width: 90%;
+   height: 45%;
+ }
+  .video video{
+    height: 100%;
+    width:90%;
+    margin-left: auto;
+  }
 }
 
 
@@ -417,6 +494,7 @@ transform: scale(0.5);
    border-radius: 10px;
    margin: auto;
    width: 90%;
+   height: 30%;
  }
 }
 
