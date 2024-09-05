@@ -20,6 +20,8 @@
       width:100%;
       height:100%;
       padding:20px;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
     .msgInput{
       width:240px;
@@ -27,7 +29,7 @@
       border-radius:10px;
       margin-top:10px;
       position:relative;
-      top:50px;
+      top:90px;
       padding:10px;
       display:flex;
       flex-direction:row;
@@ -69,7 +71,7 @@
   border-radius:10px;
   width:240px;
   position:relative;
-  top:50px;
+  top:80px;
   margin-top:20px;
   padding:10px;
   float:right;
@@ -84,11 +86,7 @@
 
 <main>
   <div class="text-container" id="smsContainer">
-    <div class="msgInput">
-          <img src="Img/profile.png" class="profile"/>
-          
-    <label class="ms-3 textLabel" id="textLabel">Hello how can help you!</label>      
-    </div>
+  
     
     
     
@@ -102,6 +100,11 @@
   </footer>
       <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script>
+  const responses = {
+    "who are you": "I am PogiAko is a bot site program that design to discuss my master personal background!",
+    "why are ypu made": "I don't know",
+    "default": "Sorry is out of my capability"
+  };
     document.getElementById('inputSms').addEventListener("keypress", function(event){
       if(event.key === "Enter"){
         sendMessage();
@@ -110,54 +113,44 @@
     document.getElementById('send-btn').addEventListener("click", function(){
       sendMessage();
     });
-    function sendMessage(){
-   const sendSms = document.getElementById('inputSms');
-   const messageText = sendSms.value.trim();
-   
-   if(messageText !== ''){
-     const chatContainer = document.getElementById('smsContainer');
- const msgText = document.createElement('div');
- msgText.className = "UserInput";
- msgText.classList.add('message', 'user');
- msgText.textContent = messageText;
- chatContainer.appendChild(msgText);
- chatContainer.scrollTop = chatContainer.scrollHeight;
-sMsreply();
-        sendSms.value = '';
-        
-   }
+    function normalizeInput(input){
+      return input.toLowerCase().replace(/[^a-z\s]/g, "").trim();
     }
-    function botReply(){
-    const botRply = document.createElement('div');
-    botRply.className = "msgInput";
-    if(sendMessage()){
-      
-    }
-    }
-    function sMsreply() {
-    const sendSms = document.getElementById('inputSms').value.trim();
-
-    if (typeof sendSms === 'string' && sendSms !== "") {
-        
-        const personalInfo = [
-            { input: "who is kenneth", output: "kenneth Barinas gwapo and tisoy"},
-      { input: "hai", output: "Hello have a nice day sir" },
-        ];
-const options = {
-            includeScore: true,
-            keys: ['input']
-        };
-        
-        const reply = personalInfo.find(info => sendSms.toLowerCase().includes(info.input.toLowerCase()));
-
-        if (reply) {
-            document.getElementById('textLabel').innerHTML = reply.output;
-        } else {
-document.getElementById('textLabel').innerHTML ="Im design to introduced the personal background of my owner";
+function getBotResponse(input){
+  input = normalizeInput(input);
+  if(responses[input]){
+    return responses[input];
+  }
+  const threshold = 0.5;
+  let betMatch = "default";
+  let highestSimilarity = 0;
+  Object.keys(responses).forEach(key =>{
+    const similarity = getSimilarity(input, key);
+            if (similarity > highestSimilarity && similarity > threshold) {
+            highestSimilarity = similarity;
+            betMatch = key;
         }
-    } else {
-        document.getElementById('textLabel').innerHTML ="No input provided or invalid input."; 
-    }
+  });
+  return responses[betMatch];
+}
+function getSimilarity(str1, str2) {
+    const set1 = new Set(str1.split(" "));
+    const set2 = new Set(str2.split(" "));
+    const intersection = new Set([...set1].filter(x => set2.has(x)));
+    const union = new Set([...set1, ...set2]);
+    return intersection.size / union.size;
+}
+function sendMessage(){
+  const UserInput = document.getElementById('inputSms').value;
+  if (UserInput.trim() === "") return;
+  const chatBox = document.getElementById('smsContainer');
+  chatBox.innerHTML += `<div class="UserInput">${UserInput}</div>`;
+  
+  const responseBot = getBotResponse(UserInput);
+  
+  chatBox.innerHTML += `<div class="msgInput">          <img src="Img/profile.png" class="profile"/>${responseBot}</div>`;
+  UserInput.value = "";
+  
 }
 
   </script>
